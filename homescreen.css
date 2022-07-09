@@ -1,0 +1,104 @@
+body{
+    height: 100vh;
+    margin: auto;
+    padding: auto;
+    background: #8395a7;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: left;
+    flex-flow: column;
+}
+
+#wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+}
+
+#display-message{
+    background: #222f3e;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 0 50vw;
+    transform: translate(-12.5vw, -25vh);
+    width: 48vw;
+    color: white;
+    font-size: 1em;
+}
+
+#contactme-wrapper{
+    background: #222f3e;
+    height: 100%;
+    margin: 0 0 10px 0;
+}
+
+#form-wrapper{
+    width: 50vw;
+    display: block;
+    background: #222f3e;
+    color: white;
+}
+
+#profile-image{
+    width: 20vw;
+    height: 25vh;
+    margin: 0 auto 0 2vw;
+    border: 5px solid white;
+}
+
+#profile-image:hover{
+    border: 5px solid pink;
+    cursor: pointer;
+}
+
+h1{
+    padding: 2vh 0 2vh 0;
+    color: white;
+    margin: 0 auto 0 2vw;
+}
+
+h2{
+    padding: 2vh 0 2vh 0;
+    color: white;
+}
+
+.basic-input, label, h2{
+    width: 20vw;
+    display: flex;
+    justify-content: center;  
+    margin: 0 auto 0 2vw;
+}
+
+
+label{
+    display: flex;
+    justify-content: left;
+}
+
+.submit-button{
+    color: white;
+    background: #576574;
+    width: 20vw;
+    margin: 0 auto 0 2vw;
+}
+
+.submit-button:hover{
+    cursor: pointer;
+    background: #2e86de;
+}
+
+#presubmissionText:hover{
+    cursor: pointer;
+}
+
+.error-message{
+    margin: 0 0 0 2vw;
+    padding: 0;
+    height: 2vh;
+    width: 20vw;
+    color: #ff6b6b;
+}
