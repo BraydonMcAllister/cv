@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsibility App</title>
+    <link rel="stylesheet" href="./css/homescreen.css" />
+    <script src="/js/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1 id="main-header">Braydon McAllister</h1>
+      <img
+        id="profile-image"
+        src="./images/roman warrior.jpg"
+        alt="Braydon McAllister"
+      />
+    </header>
+    <hr />
+    <div id="wrapper">
+      <div id="contactme-wrapper">
+        <h2>Contact Me</h2>
+        <hr />
+        <div id="form-wrapper">
+          <form
+            id="contactme-form"
+            action="mailto:braydon.mcallister@gmail.com"
+            method="post"
+            enctype="text/plain"
+            target="_blank"
+            onsubmit="return formValidation()"
+          >
+            <label for="yourName">Your Name:</label>
+            <input
+              class="basic-input"
+              type="text"
+              name="yourName"
+              value=""
+              placeholder="enter your name"
+              onkeydown="clearErrors(0)"
+              autocomplete="off"
+            /><p class="error-message"></p><br />
+            <label for="yourEmail">Email:</label>
+            <input
+              class="basic-input"
+              type="email"
+              name="yourEmail"
+              value=""
+              placeholder="enter your email"
+              onkeydown="clearErrors(1)"
+              autocomplete="off"
+            /><p class="error-message"></p><br />
+            <label for="textArea">Your message:</label>
+            <textarea
+              id="contactme-message"
+              class="basic-input"
+              name="textArea"
+              form="contactme-form"
+              rows="10"
+              placeholder="start typing..."
+              value=""
+              onkeyup="checkValue()"
+              onkeydown="clearErrors(2)"
+              autocomplete="off"
+            ></textarea
+            ><p class="error-message"></p><br />
+            <input
+              class="submit-button"
+              type="submit"
+              name="yourMessage"
+              value="Send Email"
+            />
+          </form>
+        </div>
+        <div id="display-message"></div>
+      </div>
+    </div>
+  </body>
+</html>
