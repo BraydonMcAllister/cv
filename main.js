@@ -1,49 +1,65 @@
-function displayMessage(){
-    document.getElementById('main-header').innerHTML = "Override Header";
-}
-
-let inputs = document.getElementsByClassName('basic-input');
-let errorMessage = document.getElementsByClassName('error-message');
-
-function formValidation(){
+//scope is overriden by strict mode in browser 
+function validateForm(){
+    let name_ = document.getElementById("name");
+    let email = document.getElementById("email");
+    let message = document.getElementById("message");
+    let errors = document.getElementsByClassName("errors");
+    let invalidChars = ['!', '#', '$', '%', '^', '&', '*', '+', '-', '=', '/', '\\'];
+    let invalidCharsInName = [];
+    let invalidCharsInEmail = [];
+    let invalidCharsInMessage = [];
+    let isError = false;
+    if(name_.value.length < 1){
+        errors.item(0).innerText = "name must not be blank";
+        isError = true;
+    }
+    if(email.value.length < 1){
+     errors.item(1).innerText = "email must not be blank";
+     isError = true;
+    }
     
-    let items = [inputs.length];
-    let errors = [inputs.length];
-    let isFormOkay = true;
+    let nameCount = 0 ;
+    let emailCount = 0;
+    let messageCount = 0;
 
-    //no special characters
-    //
-    for(let i = 0; i < inputs.length; i++){
-        let item = inputs.item(i);
-        items[i] = item.value;
-        if(item.value === null || item.value === ""){
-            errors[i] = "error, no value given";         
-            isFormOkay = false;  
+        for(let i = 0; i < invalidChars.length; i++){
+            if(name_.value.includes(invalidChars[i])){
+                invalidCharsInName[nameCount] = invalidChars[i];
+                nameCount++;
+            }
+            if(email.value.includes(invalidChars[i])){
+                invalidCharsInEmail[emailCount] = invalidChars[i];
+                emailCount++;
+            }
+            if(message.value.includes(invalidChars[i])){
+                invalidCharsInMessage[messageCount] = invalidChars[i];
+                messageCount++;
+            }
         }
-    }
 
-    for(let i = 0; i < items.length; i++){
-        if(errors[i] != undefined || errors[i] != null){
-            errorMessage.item(i).innerHTML = errors[i];
-        }else if(errors[i] > 0){
-            errorMessage.item(i).innerHTML = "";
+        console.log(invalidCharsInName);
+        console.log(invalidCharsInEmail);
+
+        if(invalidCharsInName.length > 0){
+            errors.item(0).innerText = "invalid character name: " + invalidCharsInName.toString();  
+            isError = true;
         }
-    }
-
-    errors = null;
-    return isFormOkay;
+        if(invalidCharsInEmail.length > 0){
+            errors.item(1).innerText = "invalid character email: " + invalidCharsInEmail.toString();   
+            isError = true;
+        }
+        if(invalidCharsInMessage.length > 0){
+            errors.item(2).innerText = "invalid character in message: " + invalidCharsInMessage.toString();   
+            isError = true;
+        }
+ 
+   return !isError;
 }
 
-function clearErrors(clickedElement){
-    errorMessage.item(clickedElement).innerHTML = "";
+function clearErrors(){
+    let errors = document.getElementsByClassName("errors");
+    for(let i = 0; i < 3; i++){
+        errors.item(i).innerText = "";
+    }   
 }
-
-
-function checkValue(){
-    let item = document.getElementById('display-message');
-    item.innerHTML = document.getElementsByClassName('basic-input').item(2).value;
-}
-
-
-
 
